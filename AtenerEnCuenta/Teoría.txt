@@ -65,3 +65,15 @@ El diagrama de fases es la representación geométrica de las trayectorias en el
     - Cálculo del Determinante: $\det(A) = a_1 b_2 - a_2 b_1$.
     - Cálculo del Discriminante: $\Delta = \text{Tr}(A)^2 - 4\det(A)$.
     - Obtención de los valores propios ($\lambda_1, \lambda_2$).
+
+
+
+
+Evaluación y Linealización mediante el Jacobiano $J(\mathbf{x}^*)$:
+    Para un sistema no lineal, el programa verifica primero que el origen $(0,0)$ sea un punto crítico ($f(0,0)=0$ y $g(0,0)=0$).
+    Calcula la matriz Jacobiana evaluada en el origen:$$J(0,0) = \begin{pmatrix} \frac{\partial f}{\partial x}(0,0) & \frac{\partial f}{\partial y}(0,0) \\ \frac{\partial g}{\partial x}(0,0) & \frac{\partial g}{\partial y}(0,0) \end{pmatrix}$$Aplicación del Teorema de Hartman-Grobman 
+    (Criterio de Hiperbolicidad):Punto Hiperbólico ($\text{Re}(\lambda) \neq 0$): Si ningún valor propio de $J(0,0)$ tiene parte real igual a cero, el comportamiento cualitativo del sistema no lineal alrededor de $(0,0)$ es topológicamente equivalente al de su linealización $\dot{\mathbf{u}} = J(0,0)\mathbf{u}$.
+    Punto No Hiperbólico ($\text{Re}(\lambda) = 0$): Si existen valores propios con parte real nula (por ejemplo, cuando la linealización predice un Centro con $\lambda = \pm i\omega$), el Teorema de Hartman-Grobman NO aplica. 
+    El programa emite un mensaje indicando que los términos no lineales pueden alterar la estabilidad (transformándolo en un foco estable/inestable o centro verdadero).
+    
+    Selección Dinámica en main.cpp:Al iniciar, el programa despliega un menú interactivo para que el usuario elija entre evaluar un Sistema Lineal o un Sistema No Lineal.
